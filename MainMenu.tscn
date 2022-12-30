@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://btr4c4dnwqqmf"]
+[gd_scene load_steps=3 format=3 uid="uid://btr4c4dnwqqmf"]
 
+[ext_resource type="Script" path="res://scripts/Connect.cs" id="1_j1as7"]
 [ext_resource type="Script" path="res://scripts/Quit.cs" id="1_wr8nn"]
 
 [node name="CenterContainer" type="CenterContainer"]
@@ -16,6 +17,10 @@ layout_mode = 2
 unique_name_in_owner = true
 layout_mode = 2
 text = "Connect to Server"
+script = ExtResource("1_j1as7")
+
+[node name="HttpConnect" type="HTTPRequest" parent="VBoxContainer/Connect"]
+unique_name_in_owner = true
 
 [node name="Settings" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
