@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://btr4c4dnwqqmf"]
+[gd_scene load_steps=4 format=3 uid="uid://btr4c4dnwqqmf"]
 
 [ext_resource type="Script" path="res://scripts/Connect.cs" id="1_j1as7"]
 [ext_resource type="Script" path="res://scripts/Quit.cs" id="1_wr8nn"]
+[ext_resource type="Script" path="res://scripts/DoConnect.cs" id="3_0msik"]
 
 [node name="CenterContainer" type="CenterContainer"]
 anchors_preset = 15
@@ -37,3 +38,50 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "Quit"
 script = ExtResource("1_wr8nn")
+
+[node name="ConnectionPanel" type="Popup" parent="."]
+unique_name_in_owner = true
+position = Vector2i(200, 300)
+size = Vector2i(250, 100)
+always_on_top = true
+
+[node name="Container" type="MarginContainer" parent="ConnectionPanel"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ConnectionPanel/Container"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ConnectionPanel/Container/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ConnectionPanel/Container/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "IP/URL:"
+
+[node name="ConnectUrl" type="TextEdit" parent="ConnectionPanel/Container/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="ConnectionPanel/Container/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="ConnectionPanel/Container/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "Port:"
+
+[node name="ConnectPort" type="TextEdit" parent="ConnectionPanel/Container/VBoxContainer/HBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="DoConnect" type="Button" parent="ConnectionPanel/Container/VBoxContainer"]
+layout_mode = 2
+text = "Connect"
+script = ExtResource("3_0msik")
