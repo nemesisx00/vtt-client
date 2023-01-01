@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://bem33ltfli1o2"]
+
+[ext_resource type="PackedScene" uid="uid://bahmm1vtpbwk0" path="res://GridCell.tscn" id="1_8awoa"]
+[ext_resource type="PackedScene" uid="uid://cfwvsq2mua7c8" path="res://Token.tscn" id="2_obcla"]
+[ext_resource type="Texture2D" uid="uid://ca7bfxo18mw5a" path="res://assets/box-transparent.png" id="2_ua1m5"]
+[ext_resource type="Texture2D" uid="uid://bmdec6w767br2" path="res://assets/A.png" id="4_jsrw0"]
+
+[node name="Table" type="Node2D"]
+
+[node name="BackgroundImage" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(640, 360)
+
+[node name="GridCell" parent="." instance=ExtResource("1_8awoa")]
+position = Vector2(326, 328)
+BackgroundTexture = ExtResource("2_ua1m5")
+
+[node name="GridCell2" parent="." instance=ExtResource("1_8awoa")]
+position = Vector2(438, 327)
+BackgroundTexture = ExtResource("2_ua1m5")
+
+[node name="GridCell3" parent="." instance=ExtResource("1_8awoa")]
+position = Vector2(553, 328)
+BackgroundTexture = ExtResource("2_ua1m5")
+
+[node name="Token" parent="." instance=ExtResource("2_obcla")]
+AvatarTexture = ExtResource("4_jsrw0")
