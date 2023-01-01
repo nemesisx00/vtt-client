@@ -38,12 +38,12 @@ public partial class Table : Node2D
 		//Calculate necessary values
 		var instance = gridCell.Instantiate<GridCell>();
 		var cellSize = instance.Size;
-		var columns = (int)Math.Floor(1280 / cellSize.x);
-		var rows = (int)Math.Floor(720 / cellSize.y);
+		var columns = (int)Math.Floor(1920 / cellSize.x);
+		var rows = (int)Math.Floor(1080 / cellSize.y);
 		instance.QueueFree();
 		
 		//Generate the grid
-		var nextPosition = new Vector2(cellSize.x / 2, 0);
+		var nextPosition = new Vector2(cellSize.x / 2, -1 * cellSize.y / 2);
 		for(var r = 0; r < rows; r++)
 		{
 			nextPosition.y += cellSize.y;
