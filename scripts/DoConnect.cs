@@ -1,5 +1,13 @@
 using Godot;
 using System;
+using System.Collections.Generic;
+using System.Text.Json;
+
+public class ResponseData
+{
+	public int? UserId { get; set; }
+	public string Message { get; set; }
+}
 
 public partial class DoConnect : Button
 {
@@ -17,15 +25,20 @@ public partial class DoConnect : Button
 	
 	public void pressHandler()
 	{
+		var appStateManager = GetNode<AppStateManager>(AppStateManager.Path);
 		var url = GetNode<TextEdit>(ConnectUrlPath).Text;
 		var port = GetNode<TextEdit>(ConnectPortPath).Text;
+		var fullurl = String.Format("{0}:{1}{2}", url, port, "/login");
+		
+		var data = new Dictionary<string, int?> { ["UserId"] = appStateManager.UserId };
+		var json = JsonSerializer.Serialize(data);
 		
 		GetNode<HTTPRequest>("%HttpConnect").Request(
-			String.Format("{0}:{1}", url, port),
+			String.Format("{0}:{1}{2}", url, port, "/login"),
 			null,
 			true,
-			HTTPClient.Method.Get,
-			""
+			HTTPClient.Method.Post,
+			json
 		);
 	}
 	
@@ -33,15 +46,17 @@ public partial class DoConnect : Button
 	{
 		if(responseCode == 200)
 		{
-			GD.Print("Success!");
+			ResponseData data = JsonSerializer.Deserialize<ResponseData>(System.Text.Encoding.UTF8.GetString(body));
 			GetNode<Popup>(ConnectionPanelPath).Hide();
-			createDialogPopup("Connection Succeeded!", System.Text.Encoding.UTF8.GetString(body));
+			if(data.UserId is int)
+			{
+				GetTree().ChangeSceneToPacked(GD.Load<PackedScene>("scenes/TableTop.tscn"));
+			}
+			else
+				createDialogPopup("Login Failed!", data.Message);
 		}
 		else
-		{
-			GD.Print("Fail!");
 			createDialogPopup("Connection Failed!", "Request timed out.");
-		}
 	}
 	
 	public void cleanUpDialog()

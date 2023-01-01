@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://btr4c4dnwqqmf"]
+[gd_scene load_steps=6 format=3 uid="uid://btr4c4dnwqqmf"]
 
-[ext_resource type="Script" path="res://scripts/TempGotoMap.cs" id="1_0vspl"]
 [ext_resource type="Script" path="res://scripts/Connect.cs" id="2_bdqhx"]
 [ext_resource type="Script" path="res://scripts/Quit.cs" id="3_k7fm3"]
 [ext_resource type="Script" path="res://scripts/DoConnect.cs" id="4_6pl8f"]
+[ext_resource type="Script" path="res://scripts/SceneChange.cs" id="4_q4ye4"]
+[ext_resource type="PackedScene" uid="uid://wph6c3jy8j74" path="res://scenes/SettingsMenu.tscn" id="5_3w8in"]
 
 [node name="CenterContainer" type="CenterContainer"]
 anchors_preset = 15
@@ -14,12 +15,6 @@ grow_vertical = 2
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
-
-[node name="TempGotoMap" type="Button" parent="VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-text = "Go to Tabletop"
-script = ExtResource("1_0vspl")
 
 [node name="Connect" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
@@ -34,6 +29,8 @@ unique_name_in_owner = true
 unique_name_in_owner = true
 layout_mode = 2
 text = "Settings"
+script = ExtResource("4_q4ye4")
+ChangeToScene = ExtResource("5_3w8in")
 
 [node name="Donate" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
