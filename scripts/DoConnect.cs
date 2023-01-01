@@ -7,7 +7,7 @@ public partial class DoConnect : Button
 	private const string ConnectUrlPath = "%ConnectUrl";
 	private const string ConnectPortPath = "%ConnectPort";
 	private const string DialogPopupName = "DialogPopup";
-	private const string PathToDialog = "%Connect/{0}";
+	private const string PathToDialog = "%DoConnect/{0}";
 	
 	public override void _Ready()
 	{
@@ -46,7 +46,9 @@ public partial class DoConnect : Button
 	
 	public void cleanUpDialog()
 	{
-		GetNode(String.Format(PathToDialog, DialogPopupName)).QueueFree();
+		var node = GetNode(String.Format(PathToDialog, DialogPopupName));
+		if(node is Node)
+			node.QueueFree();
 	}
 	
 	private void createDialogPopup(string title, string text)
