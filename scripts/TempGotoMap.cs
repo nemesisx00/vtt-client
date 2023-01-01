@@ -11,6 +11,6 @@ public partial class TempGotoMap : Button
 	
 	public void pressHandler()
 	{
-		GetTree().ChangeSceneToFile("TableTop.tscn");
+		GetTree().ChangeSceneToFile("scenes/TableTop.tscn");
 	}
 }

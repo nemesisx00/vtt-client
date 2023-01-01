@@ -1,9 +1,9 @@
 [gd_scene load_steps=5 format=3 uid="uid://btr4c4dnwqqmf"]
 
-[ext_resource type="Script" path="res://scripts/TempGotoMap.cs" id="1_6cv2q"]
-[ext_resource type="Script" path="res://scripts/Connect.cs" id="1_j1as7"]
-[ext_resource type="Script" path="res://scripts/Quit.cs" id="1_wr8nn"]
-[ext_resource type="Script" path="res://scripts/DoConnect.cs" id="3_0msik"]
+[ext_resource type="Script" path="res://scripts/TempGotoMap.cs" id="1_0vspl"]
+[ext_resource type="Script" path="res://scripts/Connect.cs" id="2_bdqhx"]
+[ext_resource type="Script" path="res://scripts/Quit.cs" id="3_k7fm3"]
+[ext_resource type="Script" path="res://scripts/DoConnect.cs" id="4_6pl8f"]
 
 [node name="CenterContainer" type="CenterContainer"]
 anchors_preset = 15
@@ -23,7 +23,7 @@ unique_name_in_owner = true
 offset_right = 146.0
 offset_bottom = 31.0
 text = "Go to Tabletop"
-script = ExtResource("1_6cv2q")
+script = ExtResource("1_0vspl")
 
 [node name="Connect" type="Button" parent="VBoxContainer"]
 unique_name_in_owner = true
@@ -31,7 +31,7 @@ offset_top = 35.0
 offset_right = 146.0
 offset_bottom = 66.0
 text = "Connect to Server"
-script = ExtResource("1_j1as7")
+script = ExtResource("2_bdqhx")
 
 [node name="HttpConnect" type="HTTPRequest" parent="VBoxContainer/Connect"]
 unique_name_in_owner = true
@@ -56,7 +56,7 @@ offset_top = 140.0
 offset_right = 146.0
 offset_bottom = 171.0
 text = "Quit"
-script = ExtResource("1_wr8nn")
+script = ExtResource("3_k7fm3")
 
 [node name="ConnectionPanel" type="Popup" parent="."]
 unique_name_in_owner = true
@@ -97,4 +97,4 @@ size_flags_horizontal = 3
 
 [node name="DoConnect" type="Button" parent="ConnectionPanel/Container/VBoxContainer"]
 text = "Connect"
-script = ExtResource("3_0msik")
+script = ExtResource("4_6pl8f")
