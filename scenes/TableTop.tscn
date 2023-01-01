@@ -1,24 +1,29 @@
-[gd_scene load_steps=4 format=3 uid="uid://yw0w0hlqdy36"]
+[gd_scene load_steps=7 format=3 uid="uid://yw0w0hlqdy36"]
 
+[ext_resource type="Script" path="res://scripts/Table.cs" id="1_c1caw"]
 [ext_resource type="PackedScene" uid="uid://bahmm1vtpbwk0" path="res://scenes/GridCell.tscn" id="1_gk3wm"]
 [ext_resource type="PackedScene" uid="uid://cfwvsq2mua7c8" path="res://scenes/Token.tscn" id="3_y137u"]
 [ext_resource type="Texture2D" uid="uid://bmdec6w767br2" path="res://assets/A.png" id="4_5g1ov"]
 
+[sub_resource type="TileSetScenesCollectionSource" id="TileSetScenesCollectionSource_oeo7t"]
+scenes/1/scene = ExtResource("1_gk3wm")
+
+[sub_resource type="TileSet" id="TileSet_pdxce"]
+tile_size = Vector2i(100, 100)
+sources/0 = SubResource("TileSetScenesCollectionSource_oeo7t")
+
 [node name="Table" type="Node2D"]
+script = ExtResource("1_c1caw")
+GridCellScene = ExtResource("1_gk3wm")
 
 [node name="BackgroundImage" type="Sprite2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(640, 360)
 
-[node name="GridCell" parent="." instance=ExtResource("1_gk3wm")]
-position = Vector2(293, 329)
-
-[node name="GridCell2" parent="." instance=ExtResource("1_gk3wm")]
-position = Vector2(419, 329)
-
-[node name="GridCell3" parent="." instance=ExtResource("1_gk3wm")]
-position = Vector2(538, 329)
+[node name="Grid" type="TileMap" parent="."]
+tile_set = SubResource("TileSet_pdxce")
+format = 2
+layer_0/tile_data = PackedInt32Array(65540, 0, 65536, 65541, 0, 65536, 65542, 0, 65536, 65543, 0, 65536, 131079, 0, 65536, 131078, 0, 65536, 131077, 0, 65536, 131076, 0, 65536, 196612, 0, 65536, 262148, 0, 65536, 262149, 0, 65536, 196614, 0, 65536, 196615, 0, 65536, 262151, 0, 65536, 262150, 0, 65536, 196613, 0, 65536)
 
 [node name="Token" parent="." instance=ExtResource("3_y137u")]
-position = Vector2(783, 332)
+position = Vector2(1008, 210)
 AvatarTexture = ExtResource("4_5g1ov")

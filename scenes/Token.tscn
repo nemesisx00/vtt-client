@@ -11,7 +11,7 @@ motion_mode = 1
 script = ExtResource("1_ms762")
 
 [node name="Collision" type="CollisionShape2D" parent="."]
-scale = Vector2(5, 5)
+scale = Vector2(4, 4)
 shape = SubResource("RectangleShape2D_3tfim")
 
 [node name="Border" type="Sprite2D" parent="."]

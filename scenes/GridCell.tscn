@@ -6,7 +6,6 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8kng5"]
 
 [node name="GridCell" type="Area2D"]
-position = Vector2(500, 350)
 script = ExtResource("1_0f2fh")
 BackgroundTexture = ExtResource("2_ua6px")
 
