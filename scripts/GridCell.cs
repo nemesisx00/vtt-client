@@ -7,7 +7,19 @@ public partial class GridCell : Area2D
 	
 	private const string BackgroundPath = "%Background";
 	
+	public bool IsOccupied { get; private set; } = false;
 	private Token occupant = null;
+	
+	public Vector2 Size
+	{
+		get
+		{
+			var size = new Vector2(0, 0);
+			if(BackgroundTexture is Texture2D)
+				size = BackgroundTexture.GetSize() * GetNode<Sprite2D>(BackgroundPath).Scale;
+			return size;
+		}
+	}
 	
 	public override void _Ready()
 	{
@@ -23,6 +35,7 @@ public partial class GridCell : Area2D
 		{
 			occupant = t;
 			occupant.DraggingEnd += centerOccupant;
+			IsOccupied = true;
 		}
 	}
 	
@@ -30,6 +43,7 @@ public partial class GridCell : Area2D
 	{
 		if(occupant.Equals(body))
 		{
+			IsOccupied = false;
 			occupant.DraggingEnd -= centerOccupant;
 			occupant = null;
 		}
